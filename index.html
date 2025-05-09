@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Text to Speech - Sirmusera</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f4f8;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    textarea, select {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+    }
+
+    #downloadLink {
+      display: none;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .status {
+      margin-top: 10px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Text to Speech Converter</h2>
+    <form id="ttsForm">
+      <label for="text">Text:</label>
+      <textarea id="text" name="text" placeholder="Type your message here..." required></textarea>
+
+      <label for="speaker">Choose a voice:</label>
+      <select id="speaker" name="speaker" required>
+        <option value="ED">Alice</option>
+        <option value="p225">Emma</option>
+        <option value="p226">Liam</option>
+        <option value="p227">Olivia</option>
+        <option value="p228">Noah</option>
+        <option value="p229">Ava</option>
+        <option value="p230">William</option>
+        <option value="p231">Sophia</option>
+        <option value="p232">James</option>
+        <option value="p233">Isabella</option>
+        <option value="p234">Benjamin</option>
+        <option value="p236">Mia</option>
+        <option value="p237">Lucas</option>
+        <option value="p238">Charlotte</option>
+        <option value="p239">Henry</option>
+        <option value="p240">Amelia</option>
+        <option value="p241">Alexander</option>
+        <option value="p243">Harper</option>
+        <option value="p244">Michael</option>
+        <option value="p245">Evelyn</option>
+        <option value="p246">Daniel</option>
+        <option value="p247">Abigail</option>
+        <option value="p248">Matthew</option>
+        <option value="p249">Emily</option>
+        <option value="p250">Samuel</option>
+        <option value="p251">Ella</option>
+        <option value="p252">David</option>
+        <option value="p253">Scarlett</option>
+        <option value="p254">Joseph</option>
+        <option value="p255">Grace</option>
+        <option value="p256">John</option>
+        <option value="p257">Chloe</option>
+        <option value="p258">Owen</option>
+        <option value="p259">Lily</option>
+        <option value="p260">Wyatt</option>
+        <option value="p261">Zoey</option>
+        <option value="p262">Jack</option>
+        <option value="p263">Hannah</option>
+        <option value="p264">Luke</option>
+        <option value="p265">Nora</option>
+        <option value="p266">Jayden</option>
+        <option value="p267">Stella</option>
+        <option value="p268">Logan</option>
+        <option value="p269">Addison</option>
+        <option value="p270">Levi</option>
+        <option value="p271">Aubrey</option>
+        <option value="p272">Isaac</option>
+        <option value="p273">Ellie</option>
+        <option value="p274">Sebastian</option>
+        <option value="p275">Hazel</option>
+        <option value="p276">Caleb</option>
+        <option value="p277">Violet</option>
+        <option value="p278">Nathan</option>
+        <option value="p279">Aurora</option>
+        <option value="p280">Christian</option>
+        <option value="p281">Savannah</option>
+        <option value="p282">Hunter</option>
+        <option value="p283">Penelope</option>
+        <option value="p284">Aaron</option>
+        <option value="p285">Aria</option>
+        <option value="p286">Eli</option>
+        <option value="p287">Riley</option>
+        <option value="p288">Jonathan</option>
+        <option value="p292">Zoë</option>
+        <option value="p293">Connor</option>
+        <option value="p294">Madeline</option>
+        <option value="p295">Isaiah</option>
+        <option value="p297">Elena</option>
+        <option value="p298">Anthony</option>
+        <option value="p299">Ruby</option>
+        <option value="p300">Charles</option>
+        <option value="p301">Claire</option>
+        <option value="p302">Jeremiah</option>
+        <option value="p303">Brooklyn</option>
+        <option value="p304">Thomas</option>
+        <option value="p305">Kinsley</option>
+        <option value="p306">Adam</option>
+        <option value="p307">Kylie</option>
+        <option value="p308">Miles</option>
+        <option value="p310">Cora</option>
+        <option value="p311">Jordan</option>
+        <option value="p312">Brielle</option>
+        <option value="p313">Xavier</option>
+        <option value="p314">Sadie</option>
+        <option value="p316">Jace</option>
+        <option value="p317">Naomi</option>
+        <option value="p318">Cole</option>
+        <option value="p323">Ariana</option>
+        <option value="p326">Evan</option>
+        <option value="p329">Alice</option>
+        <option value="p330">Ian</option>
+        <option value="p333">Luna</option>
+        <option value="p334">Axel</option>
+        <option value="p335">Piper</option>
+        <option value="p336">Gavin</option>
+        <option value="p339">Eva</option>
+        <option value="p340">Sawyer</option>
+        <option value="p341">Camila</option>
+        <option value="p343">Jason</option>
+        <option value="p345">Juliana</option>
+        <option value="p347">Leon</option>
+        <option value="p351">Reagan</option>
+        <option value="p360">Brody</option>
+        <option value="p361">Isla</option>
+        <option value="p362">Zachary</option>
+        <option value="p363">Valentina</option>
+        <option value="p364">Asher</option>
+        <option value="p374">Sophie</option>
+        <option value="p376">Adeline</option>
+      </select>
+        <!-- Add more as needed -->
+      <button type="submit">Convert to Speech</button>
+    </form>
+
+    <div class="status" id="statusMessage"></div>
+    <a id="downloadLink" href="#" download>Download Audio</a>
+  </div>
+
+  <script>
+    const form = document.getElementById("ttsForm");
+    const statusMessage = document.getElementById("statusMessage");
+    const downloadLink = document.getElementById("downloadLink");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const text = document.getElementById("text").value;
+      const speaker = document.getElementById("speaker").value;
+      statusMessage.textContent = "Processing, please wait...";
+      downloadLink.style.display = "none";
+
+      try {
+        const response = await fetch("/text2speech/api/tts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ text: text, speaker: speaker })
+        });
+
+        if (!response.ok) {
+          throw new Error("Error generating audio");
+        }
+
+        const blob = await response.blob();
+        const audioUrl = URL.createObjectURL(blob);
+        downloadLink.href = audioUrl;
+        downloadLink.style.display = "inline-block";
+        downloadLink.textContent = "Download Audio";
+        statusMessage.textContent = "Success!";
+      } catch (error) {
+        console.error("Error:", error);
+        statusMessage.textContent = "Failed to generate audio. Please try again.";
+      }
+    });
+  </script>
+</body>
+</html>
