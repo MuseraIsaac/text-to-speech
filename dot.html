@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text to Speech - Sirmusera</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        #downloadLink {
+            display: none;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .status {
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Text to Speech Converter</h2>
+    <p>Enter your text below and receive an audio file.</p>
+
+    <form id="ttsForm">
+        <textarea id="text" name="text" placeholder="Type your message here..." required></textarea>
+        <button type="submit">Convert to Speech</button>
+    </form>
+
+    <div class="status" id="statusMessage"></div>
+    <a id="downloadLink" href="#" download="speech.wav">Download Audio</a>
+</div>
+
+<script>
+    const form = document.getElementById("ttsForm");
+    const statusMessage = document.getElementById("statusMessage");
+    const downloadLink = document.getElementById("downloadLink");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const text = document.getElementById("text").value.trim();
+        if (!text) return;
+
+        statusMessage.textContent = "Processing, please wait...";
+        downloadLink.style.display = "none";
+
+        try {
+            const response = await fetch("/text2speech/api/tts", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ text })
+            });
+
+            if (!response.ok) throw new Error("Audio generation failed");
+
+            const blob = await response.blob();
+            const audioUrl = URL.createObjectURL(blob);
+
+            downloadLink.href = audioUrl;
+            downloadLink.style.display = "inline-block";
+            statusMessage.textContent = "Audio ready!";
+        } catch (error) {
+            console.error("Error:", error);
+            statusMessage.textContent = "Failed to generate audio.";
+        }
+    });
+</script>
+
+</body>
+</html>
