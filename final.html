@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Text to Speech - Sirmusera</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f4f8;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    textarea, select {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1d4ed8;
+    }
+    #downloadLink {
+      display: none;
+      margin-top: 20px;
+    }
+    #message {
+      margin-top: 15px;
+      color: red;
+    }
+    .loader {
+      display: none;
+      margin: 18px auto;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #2563eb;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Text-to-Speech Generator</h2>
+    <label for="text">Enter text:</label>
+    <textarea id="text" rows="5" placeholder="Type your text here..."></textarea>
+    <label for="speaker">Choose a speaker:</label>
+    <select id="speaker">
+      <!-- Your long list of speakers here -->
+      <option value="p225">p225</option>
+      <option value="p226">p226</option>
+      <option value="p227">p227</option>
+      <option value="p228">p228</option>
+      <option value="p229">p229</option>
+      <option value="p230">p230</option>
+      <option value="p231">p231</option>
+      <option value="p232">p232</option>
+      <option value="p233">p233</option>
+      <option value="p234">p234</option>
+      <option value="p236">p236</option>
+      <option value="p237">p237</option>
+      <option value="p238">p238</option>
+      <option value="p239">p239</option>
+      <option value="p240">p240</option>
+      <option value="p241">p241</option>
+      <option value="p243">p243</option>
+      <option value="p244">p244</option>
+      <option value="p245">p245</option>
+      <option value="p246">p246</option>
+      <option value="p247">p247</option>
+      <option value="p248">p248</option>
+      <option value="p249">p249</option>
+      <option value="p250">p250</option>
+      <option value="p251">p251</option>
+      <option value="p252">p252</option>
+      <option value="p253">p253</option>
+      <option value="p254">p254</option>
+      <option value="p255">p255</option>
+      <option value="p256">p256</option>
+      <option value="p257">p257</option>
+      <option value="p258">p258</option>
+      <option value="p259">p259</option>
+      <option value="p260">p260</option>
+      <option value="p261">p261</option>
+      <option value="p262">p262</option>
+      <option value="p263">p263</option>
+      <option value="p264">p264</option>
+      <option value="p265">p265</option>
+      <option value="p266">p266</option>
+      <option value="p267">p267</option>
+      <option value="p268">p268</option>
+      <option value="p269">p269</option>
+      <option value="p270">p270</option>
+      <option value="p271">p271</option>
+      <option value="p272">p272</option>
+      <option value="p273">p273</option>
+      <option value="p274">p274</option>
+      <option value="p275">p275</option>
+      <option value="p276">p276</option>
+      <option value="p277">p277</option>
+      <option value="p278">p278</option>
+      <option value="p279">p279</option>
+      <option value="p280">p280</option>
+      <option value="p281">p281</option>
+      <option value="p282">p282</option>
+      <option value="p283">p283</option>
+      <option value="p284">p284</option>
+      <option value="p285">p285</option>
+      <option value="p286">p286</option>
+      <option value="p287">p287</option>
+      <option value="p288">p288</option>
+      <option value="p292">p292</option>
+      <option value="p293">p293</option>
+      <option value="p294">p294</option>
+      <option value="p295">p295</option>
+      <option value="p297">p297</option>
+      <option value="p298">p298</option>
+      <option value="p299">p299</option>
+      <option value="p300">p300</option>
+      <option value="p301">p301</option>
+      <option value="p302">p302</option>
+      <option value="p303">p303</option>
+      <option value="p304">p304</option>
+      <option value="p305">p305</option>
+      <option value="p306">p306</option>
+      <option value="p307">p307</option>
+      <option value="p308">p308</option>
+      <option value="p310">p310</option>
+      <option value="p311">p311</option>
+      <option value="p312">p312</option>
+      <option value="p313">p313</option>
+      <option value="p314">p314</option>
+      <option value="p316">p316</option>
+      <option value="p317">p317</option>
+      <option value="p318">p318</option>
+      <option value="p323">p323</option>
+      <option value="p326">p326</option>
+      <option value="p329">p329</option>
+      <option value="p330">p330</option>
+      <option value="p333">p333</option>
+      <option value="p334">p334</option>
+      <option value="p335">p335</option>
+      <option value="p336">p336</option>
+      <option value="p339">p339</option>
+      <option value="p340">p340</option>
+      <option value="p341">p341</option>
+      <option value="p343">p343</option>
+      <option value="p345">p345</option>
+      <option value="p347">p347</option>
+      <option value="p351">p351</option>
+      <option value="p360">p360</option>
+      <option value="p361">p361</option>
+      <option value="p362">p362</option>
+      <option value="p363">p363</option>
+      <option value="p364">p364</option>
+      <option value="p374">p374</option>
+      <option value="p376">p376</option>
+    </select>
+    <button onclick="synthesize()">Generate Speech</button>
+    <div class="loader" id="loader"></div>
+    <div id="message"></div>
+    <a id="downloadLink" href="#" download="output.wav">Download Audio</a>
+  </div>
+  <script>
+    async function synthesize() {
+      const text = document.getElementById('text').value;
+      const speaker = document.getElementById('speaker').value;
+      const message = document.getElementById('message');
+      const downloadLink = document.getElementById('downloadLink');
+      const loader = document.getElementById('loader');
+
+      message.textContent = '';
+      downloadLink.style.display = 'none';
+      loader.style.display = 'block';
+
+      try {
+        const response = await fetch('/text2speech/api/tts', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ text, speaker })
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          message.textContent = 'Error: ' + (errorData.error || 'Unknown error occurred');
+          loader.style.display = 'none';
+          return;
+        }
+
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        downloadLink.href = url;
+        downloadLink.style.display = 'inline-block';
+        message.textContent = 'Speech generated successfully!';
+      } catch (err) {
+        console.error(err);
+        message.textContent = 'Failed to connect to the TTS server.';
+      } finally {
+        loader.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
